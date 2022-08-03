@@ -5,6 +5,7 @@ class Title extends React.Component {
         <div style={this.props.style}>
         <h2
           className="allscore"
+          data-cy="title"
         >
         Количество очков: {this.props.value}, потрачено очков: {this.props.wasted}
         </h2>
