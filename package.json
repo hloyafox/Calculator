@@ -8,7 +8,6 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.1.3",
-    "create-react-app": "^5.0.1",
     "react": "^18.1.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
@@ -17,8 +16,30 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    
+    "eject": "react-scripts eject",
+    "cy_test": "cypress open",
+
+    "cy:run": "cypress run --env allure=true allure generate allure-results",
+
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+
+    "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots || true",
+
+    "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true",
+
+    "prestart": "npm install",
+
+    
+
+    "pretest": "npm run allure:clear",
+
+    "test": "npm run cy:run || npm run posttest",
+
+    "posttest": "npm run allure:report",
+
+    "test-single-run": "npm test -- --single-run"
+
   },
   "eslintConfig": {
     "extends": [
@@ -39,7 +60,8 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^10.4.0",
+    "@shelex/cypress-allure-plugin": "^2.28.5",
+    "cypress": "^10.6.0",
     "web-vitals": "^2.1.4"
   }
 }
