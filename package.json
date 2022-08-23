@@ -20,7 +20,7 @@
     "eject": "react-scripts eject",
     "cy_test": "cypress open",
 
-    "cy:run": "cypress run --env allure=true allure generate allure-results",
+    "cy:run": "cypress run --env allure=true",
 
     "allure:report": "allure generate allure-results --clean -o allure-report",
 
