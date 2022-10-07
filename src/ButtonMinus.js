@@ -4,6 +4,7 @@ class ButtonMinus extends React.Component {
       return (
         <button
           className="btn btn-outline-secondary btn-sm minus"
+          data-cy="button-minus"
           id = {this.props.id}
           onClick={() => this.props.onClick()}
         >
